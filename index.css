@@ -285,11 +285,13 @@ body{
     transition: max-height 0.3s ease;
     overflow-y: auto;
     padding: 15px;
+    background-color: yellow;
     /* for visual testing */
   }
 
   .chat-body.chat-shrink {
-    max-height: calc(100vh - 370px); /* simulates keyboard eating space */
+    max-height: calc(100vh - 370px); 
+    background-color: red; 
     
   }
 
