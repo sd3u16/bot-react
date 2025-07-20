@@ -100,8 +100,11 @@ body{
   scroll-behavior: smooth;
   scrollbar-width: 5px;
   scrollbar-color: gray transparent;
-  max-height: 500px;
+  
   outline: 0;
+
+  max-height: 600px;
+  transition: all 0.3s ease;
   
 }
 
@@ -141,8 +144,7 @@ body{
 }
 
 .chat-footer{
-  position: absolute;
-  bottom: 0;
+ 
 
   border-radius: 0 0 15px 15px;
  
@@ -151,6 +153,9 @@ body{
   align-items: center;
   padding: 30px 15px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+
 }
 
 .footer-form{
@@ -250,21 +255,63 @@ body{
   
 }
 
+.cont-input{
+  width: 150px;
+  height: 150px;
+  background-color: gold;
+  display: none;
+}
+
+
+
 @media screen and (max-width: 767px) {
-  .container{
+  .container {
+    display: flex;
+    flex-direction: column;
     width: 100vw !important;
     height: 100vh !important;
     bottom: 0 !important;
     right: 0 !important;
     border-radius: 0 !important;
-   
+    position: fixed;
+  }
+
+  .chat-header {
+    flex-shrink: 0;
   }
 
   .chat-body {
-    max-height: calc(100vh - 140px); /* Adjust this depending on your header/footer height */
+    flex-grow: 1;
+    transition: max-height 0.3s ease;
+    overflow-y: auto;
+    padding: 15px;
+    /* for visual testing */
   }
 
-  .disp{
+  .chat-body.chat-shrink {
+    max-height: calc(100vh - 370px); /* simulates keyboard eating space */
+    
+  }
+
+  .chat-footer {
+    flex-shrink: 0;
+    position: relative;
+    padding: 30px 15px;
+    background: white;
+  }
+
+  .keyboard-spacer {
+    height: 200px;
+    flex-shrink: 0;
+    transition: height 0.3s ease;
+  }
+
+  .disp {
     display: none;
   }
+
+ 
+ 
+
+
 }

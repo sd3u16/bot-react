@@ -11,6 +11,9 @@ import { companyInfo } from './companyInfo';
 
 function App() {
 
+ const [hasInputText, setHasInputText] = useState(false);
+
+
   const [history, setHistory] = useState([
     {
       hideInChat: true,
@@ -77,8 +80,7 @@ function App() {
             </div>
         </div>
 
-        <div  ref = {bodyRef} className="chat-body">
-
+        <div className={`chat-body ${hasInputText ? 'chat-shrink' : ''}`} ref={bodyRef}>
             
             <div className="bot-message">
               <span className='bot-circle bot-body'><FaRobot className='bot' fill='white'/></span>
@@ -93,7 +95,8 @@ function App() {
         </div>
  
         <div className="chat-footer">
-            <ChatForm history={history} generateBotResponse={generateBotResponse} setHistory = {setHistory}/>
+            <ChatForm history={history} generateBotResponse={generateBotResponse} setHistory = {setHistory} onInputChange={setHasInputText}/>
+            {hasInputText && <div className="keyboard-spacer"></div>}
         </div>
       </div>}
 
@@ -101,6 +104,8 @@ function App() {
       <span className={shotPop === true ? "message openo": "message"}><IoCloseOutline size={40} color='white'/></span>
       <span className={shotPop === true ? 'closo close' :'close'}><FiMessageSquare size={40} color='white'/></span>
    </div>
+
+  
       
     </>
   )
