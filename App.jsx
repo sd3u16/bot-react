@@ -26,9 +26,23 @@ function App() {
   
   useEffect(()=>{
 
-    bodyRef.current &&
-         bodyRef.current.scrollTo({top: bodyRef.current.scrollHeight, behavior: 'smooth'})
-  }, [history])
+    
+    const scrollToBottom = () => {
+    if (bodyRef.current) {
+      // Let layout changes finish before scrolling
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          bodyRef.current.scrollTo({
+            top: bodyRef.current.scrollHeight,
+            behavior: 'smooth',
+          });
+        }, 150); // 150–200ms works well
+      });
+    }
+  };
+
+       scrollToBottom();  
+  }, [history, hasInputText])
 
 
   const generateBotResponse =async (history) => {
@@ -91,12 +105,13 @@ function App() {
               return <ChatMessage key={i} hist = {hist}/>
             })}
 
+             {hasInputText && <div className="keyboard-spacer"></div>}
            
         </div>
  
         <div className="chat-footer">
             <ChatForm history={history} generateBotResponse={generateBotResponse} setHistory = {setHistory} onInputChange={setHasInputText}/>
-            {hasInputText && <div className="keyboard-spacer"></div>}
+           
         </div>
       </div>}
 

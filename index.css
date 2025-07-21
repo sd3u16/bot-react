@@ -15,14 +15,14 @@ body{
 }
 
 
+
+
 .container{
   background-color: white;
   width: 410px;
   border-radius: 20px 20px 20px 20px ;
   height: 100px;
   overflow: hidden;
- 
-  position: relative;
   height: 620px;
   outline: 0;
   position: fixed;
@@ -45,8 +45,6 @@ body{
   background-color: #9e7cfb;
   padding: 15px;
   align-items: flex-end;
-  
-  
   
 }
 
@@ -91,7 +89,7 @@ body{
 }
 
 .chat-body{
-  padding: 15px;
+  padding: 14px;
   display: flex;
   flex-flow: column nowrap;
   margin-bottom: 20px;
@@ -103,7 +101,7 @@ body{
   
   outline: 0;
 
-  max-height: 600px;
+  max-height: 480px;
   transition: all 0.3s ease;
   
 }
@@ -262,7 +260,12 @@ body{
   display: none;
 }
 
-
+.keyboard-spacer {
+    height: 0px;
+  min-height: 0px;
+  flex-shrink: 0;
+    transition: height 0.3s ease;
+  }
 
 @media screen and (max-width: 767px) {
   .container {
@@ -285,26 +288,27 @@ body{
     transition: max-height 0.3s ease;
     overflow-y: auto;
     padding: 15px;
-    background-color: yellow;
+    max-height: 780px;
     /* for visual testing */
   }
 
   .chat-body.chat-shrink {
-    max-height: calc(100vh - 370px); 
-    background-color: red; 
+    max-height: calc(100vh - 460px); 
+   
     
   }
 
   .chat-footer {
     flex-shrink: 0;
     position: relative;
-    padding: 30px 15px;
+    padding: 20px 15px;
     background: white;
   }
 
   .keyboard-spacer {
-    height: 200px;
-    flex-shrink: 0;
+    height: 50px;
+  min-height: 50px;
+  flex-shrink: 0;
     transition: height 0.3s ease;
   }
 
